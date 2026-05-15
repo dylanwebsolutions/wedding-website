@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Name] & [Name] — 21.11.2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream:      #FAF8F5;
+            --white:      #FFFFFF;
+            --charcoal:   #1C1C1C;
+            --mid:        #6B6560;
+            --gold:       #C4A882;
+            --gold-light: #EDE0CC;
+            --border:     rgba(196, 168, 130, 0.3);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--charcoal);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAVBAR ─────────────────────────────────────────────── */
+        #navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 2.5rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            transform: translateY(-100%);
+            transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #navbar.visible { transform: translateY(0); }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--mid);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--charcoal); }
+
+        .nav-rsvp {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--white);
+            background: var(--charcoal);
+            padding: 0.65rem 1.6rem;
+            border: 1px solid var(--charcoal);
+            transition: background 0.22s, color 0.22s;
+            flex-shrink: 0;
+        }
+
+        .nav-rsvp:hover {
+            background: transparent;
+            color: var(--charcoal);
+        }
+
+        /* ─── HERO ───────────────────────────────────────────────── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 5rem;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 38%, #FFFFFF 0%, var(--cream) 68%);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.8rem, 10vw, 9rem);
+            font-weight: 300;
+            color: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .hero-names span {
+            display: block;
+            line-height: 0.95;
+        }
+
+        .hero-names .amp {
+            font-style: italic;
+            color: var(--gold);
+            font-size: 0.78em;
+            line-height: 1.0;
+            margin: 0.04em 0;
+        }
+
+        .hero-rule {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 2rem auto;
+            width: 260px;
+        }
+
+        .hero-rule::before,
+        .hero-rule::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .hero-diamond {
+            width: 7px;
+            height: 7px;
+            border: 1px solid var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            color: var(--mid);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-sub {
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .cd-unit { text-align: center; }
+
+        .cd-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            line-height: 1;
+            min-width: 2.2ch;
+        }
+
+        .cd-label {
+            font-size: 0.57rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-top: 0.45rem;
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .scroll-hint span {
+            font-size: 0.57rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--mid);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 38px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(7px); }
+        }
+
+        /* ─── SHARED SECTION STYLES ──────────────────────────────── */
+        .section-label {
+            display: block;
+            font-size: 0.63rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 300;
+            line-height: 1.12;
+            color: var(--charcoal);
+            margin-bottom: 1.4rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .section-body {
+            font-size: 0.975rem;
+            color: var(--mid);
+            line-height: 1.92;
+        }
+
+        /* ─── OUR STORY ──────────────────────────────────────────── */
+        #story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            padding: 8rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-photo {
+            aspect-ratio: 3/4;
+            background: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-photo-placeholder {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .story-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .tl-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--gold);
+            min-width: 48px;
+            padding-top: 0.1rem;
+        }
+
+        .tl-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .tl-text p {
+            font-size: 0.88rem;
+            color: var(--mid);
+            line-height: 1.75;
+        }
+
+        /* ─── THE DAY ─────────────────────────────────────────────── */
+        #details {
+            background: var(--charcoal);
+            padding: 8rem 4rem;
+        }
+
+        #details .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        #details .section-title { color: var(--white); }
+
+        #details .section-body { color: rgba(255,255,255,0.45); }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-top: 3.5rem;
+        }
+
+        .day-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(196,168,130,0.18);
+            padding: 3rem;
+        }
+
+        .day-card-type {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .day-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .day-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.85;
+        }
+
+        .day-card .time {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-top: 1.75rem;
+        }
+
+        /* ─── SYDNEY ─────────────────────────────────────────────── */
+        #travel {
+            padding: 8rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .travel-card {
+            border: 1px solid var(--border);
+            padding: 2.25rem;
+            background: var(--white);
+        }
+
+        .travel-icon {
+            font-size: 1.4rem;
+            margin-bottom: 1.1rem;
+            display: block;
+        }
+
+        .travel-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .travel-card p {
+            font-size: 0.875rem;
+            color: var(--mid);
+            line-height: 1.8;
+        }
+
+        /* ─── RSVP ───────────────────────────────────────────────── */
+        #rsvp {
+            padding: 8rem 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .rsvp-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mini-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 160px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .mini-divider::before,
+        .mini-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .mini-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .rsvp-form {
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group { margin-bottom: 1.2rem; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            color: var(--charcoal);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.925rem;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--gold); }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C4A882' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--charcoal);
+            color: var(--white);
+            border: 1px solid var(--charcoal);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.22s, color 0.22s;
+            margin-top: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: transparent;
+            color: var(--charcoal);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--mid);
+            margin-top: 1.5rem;
+            line-height: 1.75;
+        }
+
+        .form-note a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 3.5rem 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .success-msg h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .success-msg p {
+            color: var(--mid);
+            font-size: 0.95rem;
+        }
+
+        /* ─── FOOTER ─────────────────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.88rem;
+            font-style: italic;
+            color: var(--mid);
+            letter-spacing: 0.04em;
+        }
+
+        footer small {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            color: #C8C2BA;
+            font-style: normal;
+        }
+
+        /* ─── SCROLL MARGIN (stop sections hiding under fixed nav) ── */
+        #story, #details, #travel, #rsvp {
+            scroll-margin-top: 0px;
+        }
+
+        /* ─── SCROLL REVEAL ─────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-36px);
+            transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.in-view,
+        .reveal-left.in-view {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        .d1 { transition-delay: 0.08s; }
+        .d2 { transition-delay: 0.18s; }
+        .d3 { transition-delay: 0.28s; }
+        .d4 { transition-delay: 0.38s; }
+        .d5 { transition-delay: 0.48s; }
+
+        /* ─── HERO ENTRANCE ──────────────────────────────────────── */
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-eyebrow            { animation: heroIn 0.85s ease both 0.15s; }
+        .hero-names span:nth-child(1) { animation: heroIn 0.85s ease both 0.30s; }
+        .hero-names span:nth-child(2) { animation: heroIn 0.85s ease both 0.48s; }
+        .hero-names span:nth-child(3) { animation: heroIn 0.85s ease both 0.64s; }
+        .hero-rule               { animation: heroIn 0.75s ease both 0.78s; }
+        .hero-date               { animation: heroIn 0.75s ease both 0.88s; }
+        .hero-sub                { animation: heroIn 0.75s ease both 0.96s; }
+        .countdown               { animation: heroIn 0.75s ease both 1.10s; }
+        .scroll-hint             { animation: heroIn 0.75s ease both 1.30s; }
+
+        /* ─── RSVP BUTTON with SVG arrow ────────────────────────── */
+        .nav-rsvp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .nav-rsvp svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+            transition: transform 0.22s ease;
+        }
+        .nav-rsvp:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* ─── RESPONSIVE ─────────────────────────────────────────── */
+        /* Medium — compress nav links but keep them visible */
+        @media (max-width: 900px) {
+            .nav-links { gap: 1.4rem; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.12em; }
+        }
+
+        /* Tablet — stack story, single-column cards */
+        @media (max-width: 820px) {
+            #story {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 6rem 2rem;
+            }
+
+            .story-photo { aspect-ratio: 4/3; }
+
+            .cards { grid-template-columns: 1fr; }
+
+            #details { padding: 6rem 2rem; }
+
+            .travel-grid { grid-template-columns: 1fr; }
+
+            #travel { padding: 6rem 2rem; }
+
+            #rsvp { padding: 6rem 2rem; }
+
+            .form-row { grid-template-columns: 1fr; }
+
+            .countdown { gap: 1.5rem; }
+            .cd-number { font-size: 2rem; }
+        }
+
+        /* Mobile — hide nav links, collapse to logo + RSVP only */
+        @media (max-width: 580px) {
+            .nav-links { display: none; }
+
+            #navbar { padding: 0 1.25rem; }
+
+            .hero-names { font-size: clamp(3rem, 14vw, 4.5rem); }
+
+            .countdown { gap: 1rem; }
+            .cd-number { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ NAVBAR -->
+<nav id="navbar">
+    <!-- CUSTOMIZE: Update initials/names below -->
+    <a href="#hero" class="nav-logo">E &amp; W</a>
+
+    <ul class="nav-links">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">The Day</a></li>
+        <li><a href="#travel">Sydney</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+
+    <a href="#rsvp" class="nav-rsvp">
+        RSVP
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+        </svg>
+    </a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ HERO -->
+<section id="hero">
+    <span class="hero-eyebrow">Sydney, Australia</span>
+
+    <!-- CUSTOMIZE: Replace "Eleanor" and "William" with your names -->
+    <h1 class="hero-names">
+        <span>Eleanor</span>
+        <span class="amp">&amp;</span>
+        <span>William</span>
+    </h1>
+
+    <div class="hero-rule">
+        <div class="hero-diamond"></div>
+    </div>
+
+    <p class="hero-date">Saturday, 21st November 2026</p>
+    <span class="hero-sub">Sydney · Australia</span>
+
+    <div class="countdown" id="countdown">
+        <div class="cd-unit">
+            <div class="cd-number" id="cd-days">–</div>
+            <div class="cd-label">Days</div>
+        </div>
+        <div class="cd-unit">
+            <div class="cd-number" id="cd-hours">–</div>
+            <div class="cd-label">Hours</div>
+        </div>
+        <div class="cd-unit">
+            <div class="cd-number" id="cd-minutes">–</div>
+            <div class="cd-label">Minutes</div>
+        </div>
+        <div class="cd-unit">
+            <div class="cd-number" id="cd-seconds">–</div>
+            <div class="cd-label">Seconds</div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ OUR STORY -->
+<div id="story">
+    <div class="story-photo reveal-left">
+        <!-- Save your photo as proposal.jpg in the wedding-website folder -->
+        <img src="proposal.jpg" alt="Our engagement photo">
+    </div>
+
+    <div>
+        <span class="section-label reveal">How it began</span>
+        <h2 class="section-title reveal d1">Our <em>Story</em></h2>
+        <p class="section-body reveal d2">
+            What started as a chance encounter on a sun-soaked holiday in Portugal turned into the greatest adventure of our lives. From cobblestone streets and pastel de nata to a lifetime of moments we never could have planned — we wouldn't change a thing.
+        </p>
+
+        <div class="story-timeline">
+            <div class="tl-item reveal d2">
+                <span class="tl-year">2021</span>
+                <div class="tl-text">
+                    <h4>We Met</h4>
+                    <p>Two Australians, one holiday, and the streets of Portugal. We crossed paths and never really looked back.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal d3">
+                <span class="tl-year">2023</span>
+                <div class="tl-text">
+                    <h4>We Got Max</h4>
+                    <p>We adopted our dog Max — and officially became a family of three. He has been chaos and joy in equal measure ever since.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal d4">
+                <span class="tl-year">2024</span>
+                <div class="tl-text">
+                    <h4>The Proposal</h4>
+                    <p>On a beach in Thailand, as the sun set over the ocean, the answer was yes before the question was finished.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ THE DAY -->
+<div id="details">
+    <div class="inner">
+        <span class="section-label reveal">Saturday, 21st November 2026</span>
+        <h2 class="section-title reveal d1" style="color: var(--white);">The <em>Day</em></h2>
+        <p class="section-body reveal d2" style="color: rgba(255,255,255,0.45); max-width: 520px;">
+            We can't wait to celebrate with you. Here are all the details for the day ahead.
+        </p>
+
+        <div class="cards">
+            <div class="day-card reveal d3">
+                <div class="day-card-type">Ceremony</div>
+                <h3>Long Reef Headland</h3>
+                <p>
+                    Long Reef Headland Reserve<br>
+                    Anzac Ave, Collaroy NSW 2097
+                </p>
+                <span class="time">3:00 PM</span>
+            </div>
+            <div class="day-card reveal d4">
+                <div class="day-card-type">Reception</div>
+                <h3>The Boathouse Palm Beach</h3>
+                <p>
+                    Governors Wharf<br>
+                    Palm Beach NSW 2108
+                </p>
+                <span class="time">6:00 PM — Late</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ SYDNEY -->
+<div id="travel">
+    <span class="section-label reveal">Getting Here</span>
+    <h2 class="section-title reveal d1">Sydney, <em>Australia</em></h2>
+    <p class="section-body reveal d2" style="max-width: 560px;">
+        We're so excited to celebrate in one of the world's most beautiful cities.
+        Here's everything you need to make your visit seamless.
+    </p>
+
+    <div class="travel-grid">
+        <div class="travel-card reveal d2">
+            <span class="travel-icon">✈</span>
+            <h4>Getting Here</h4>
+            <p>
+                Fly into Sydney Kingsford Smith Airport (SYD). From there, head north
+                on the Northern Beaches Busway or grab a rideshare — Palm Beach is
+                about an hour from the airport depending on traffic.
+            </p>
+        </div>
+        <div class="travel-card reveal d3">
+            <span class="travel-icon">🏡</span>
+            <h4>Where to Stay</h4>
+            <p>
+                We recommend staying in the Northern Beaches — close to both venues
+                and one of Sydney's most beautiful stretches of coastline. We'll be
+                based in a large Airbnb home in Palm Beach for the weekend and can't
+                wait to have everyone nearby.
+            </p>
+        </div>
+        <div class="travel-card reveal d4">
+            <span class="travel-icon">🌊</span>
+            <h4>Explore the Beaches</h4>
+            <p>
+                Make a weekend of it — swim at Whale Beach, walk the Barrenjoey
+                Lighthouse track, or catch a ferry from Palm Beach to Ettalong.
+                November weather is warm, sunny, and perfect for it.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ RSVP -->
+<div id="rsvp">
+    <div class="rsvp-inner">
+        <div class="mini-divider reveal"></div>
+
+        <!-- CUSTOMIZE: Update the RSVP deadline date -->
+        <span class="section-label reveal d1">Kindly reply by 1st September 2026</span>
+        <h2 class="section-title reveal d2">RSVP</h2>
+        <p class="section-body reveal d3">
+            Please let us know if you'll be joining us by completing the form below.
+        </p>
+
+        <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║  RSVP SETUP — Choose one option:                        ║
+        ║                                                          ║
+        ║  OPTION A — Formspree (sends email to your inbox):      ║
+        ║    1. Go to https://formspree.io — create a free account ║
+        ║    2. Create a new form and copy your form ID            ║
+        ║    3. Replace "YOUR_FORM_ID" in the action below         ║
+        ║                                                          ║
+        ║  OPTION B — Google Forms:                               ║
+        ║    1. Create a Google Form at forms.google.com           ║
+        ║    2. Link responses to a Google Sheet                   ║
+        ║    3. Replace the <form> below with an <iframe> embed    ║
+        ╚══════════════════════════════════════════════════════════╝
+        -->
+        <form
+            class="rsvp-form reveal d4"
+            id="rsvp-form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+        >
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first_name" required placeholder="Your first name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last_name" required placeholder="Your last name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="attendance">Attendance</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="" disabled selected>Please select</option>
+                        <option value="Joyfully accepts">Joyfully Accepts</option>
+                        <option value="Regretfully declines">Regretfully Declines</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" name="number_of_guests">
+                        <option value="1">1 — Just me</option>
+                        <option value="2">2 — Myself + 1</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dietary">Dietary Requirements</label>
+                <input type="text" id="dietary" name="dietary_requirements" placeholder="Vegetarian, gluten-free, allergies, etc.">
+            </div>
+
+            <div class="form-group">
+                <label for="song">Song Request 🎵</label>
+                <input type="text" id="song" name="song_request" placeholder="Your guaranteed dance floor anthem">
+            </div>
+
+            <div class="form-group">
+                <label for="message">A Message for Us</label>
+                <textarea id="message" name="message" placeholder="Share your well wishes, a favourite memory, or anything you'd like us to know…"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit" id="submit-btn">
+                Send RSVP
+            </button>
+
+            <!-- CUSTOMIZE: Update the fallback email address -->
+            <p class="form-note">
+                Having trouble? Email us directly at<br>
+                <a href="mailto:couple@email.com">[couple@email.com]</a>
+            </p>
+        </form>
+
+        <div class="success-msg" id="success-msg">
+            <div class="mini-divider" style="margin-bottom: 2rem;"><div class="mini-dot"></div></div>
+            <h3>Thank you!</h3>
+            <p>We've received your RSVP and can't wait to celebrate with you.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ FOOTER -->
+<footer>
+    <!-- CUSTOMIZE: Update with your names -->
+    <p>Eleanor &amp; William · Sydney · 21st November 2026</p>
+    <small>Made with love</small>
+</footer>
+
+<script>
+    // ── Smart navbar: hide on scroll down, reveal on scroll up ──────
+    const navbar = document.getElementById('navbar');
+    let lastY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        window.requestAnimationFrame(() => {
+            const y = window.scrollY;
+            if (y < 80) {
+                navbar.classList.remove('visible');
+            } else if (y < lastY) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            lastY = y;
+            ticking = false;
+        });
+        ticking = true;
+    });
+
+    // ── Live countdown to wedding date (Sydney AEDT = UTC+11 in Nov) ──
+    const WEDDING = new Date('2026-11-21T15:00:00+11:00');
+
+    function tick() {
+        const diff = WEDDING - Date.now();
+
+        if (diff <= 0) {
+            document.getElementById('countdown').innerHTML =
+                '<p style="font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.6rem;color:var(--gold);">Today\'s the day!</p>';
+            return;
+        }
+
+        const d = Math.floor(diff / 864e5);
+        const h = Math.floor(diff % 864e5 / 36e5);
+        const m = Math.floor(diff % 36e5 / 6e4);
+        const s = Math.floor(diff % 6e4 / 1e3);
+
+        document.getElementById('cd-days').textContent    = String(d).padStart(3, '0');
+        document.getElementById('cd-hours').textContent   = String(h).padStart(2, '0');
+        document.getElementById('cd-minutes').textContent = String(m).padStart(2, '0');
+        document.getElementById('cd-seconds').textContent = String(s).padStart(2, '0');
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // ── Scroll reveal via IntersectionObserver ───────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // ── RSVP: async Formspree submission with success state ──────────
+    const form       = document.getElementById('rsvp-form');
+    const successMsg = document.getElementById('success-msg');
+    const submitBtn  = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.textContent = 'Sending…';
+        submitBtn.disabled = true;
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+
+            if (res.ok) {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+            } else {
+                submitBtn.textContent = 'Something went wrong — please try again';
+                submitBtn.disabled = false;
+            }
+        } catch {
+            submitBtn.textContent = 'Something went wrong — please try again';
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>
