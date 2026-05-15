@@ -107,11 +107,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 6rem 2rem 5rem;
+            padding: 5rem 2rem 0;
             position: relative;
             background: radial-gradient(ellipse at 50% 38%, #FFFFFF 0%, var(--cream) 68%);
+        }
+
+        .hero-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         .hero-eyebrow {
@@ -215,17 +223,16 @@
             margin-top: 0.45rem;
         }
 
-        /* Scroll indicator */
+        /* Scroll indicator — natural flex child, always at bottom of hero */
         .scroll-hint {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 0;
-            right: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.6rem;
+            padding-bottom: 2.5rem;
+            margin-top: 3rem;
             animation: bob 2.2s ease-in-out infinite;
+            width: 100%;
         }
 
         .scroll-hint span {
@@ -371,7 +378,7 @@
         .cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2px;
+            gap: 1.5rem;
             margin-top: 3.5rem;
         }
 
@@ -757,38 +764,40 @@
 
 <!-- ═══════════════════════════════════════════════════════ HERO -->
 <section id="hero">
-    <span class="hero-eyebrow">You Are Invited</span>
+    <div class="hero-inner">
+        <span class="hero-eyebrow">You Are Invited</span>
 
-    <!-- CUSTOMIZE: Replace "Eleanor" and "William" with your names -->
-    <h1 class="hero-names">
-        <span>Eleanor</span>
-        <span class="amp">&amp;</span>
-        <span>William</span>
-    </h1>
+        <!-- CUSTOMIZE: Replace "Eleanor" and "William" with your names -->
+        <h1 class="hero-names">
+            <span>Eleanor</span>
+            <span class="amp">&amp;</span>
+            <span>William</span>
+        </h1>
 
-    <div class="hero-rule">
-        <div class="hero-diamond"></div>
-    </div>
-
-    <p class="hero-date">Saturday, 21st November 2026</p>
-    <span class="hero-sub">Sydney · Australia</span>
-
-    <div class="countdown" id="countdown">
-        <div class="cd-unit">
-            <div class="cd-number" id="cd-days">–</div>
-            <div class="cd-label">Days</div>
+        <div class="hero-rule">
+            <div class="hero-diamond"></div>
         </div>
-        <div class="cd-unit">
-            <div class="cd-number" id="cd-hours">–</div>
-            <div class="cd-label">Hours</div>
-        </div>
-        <div class="cd-unit">
-            <div class="cd-number" id="cd-minutes">–</div>
-            <div class="cd-label">Minutes</div>
-        </div>
-        <div class="cd-unit">
-            <div class="cd-number" id="cd-seconds">–</div>
-            <div class="cd-label">Seconds</div>
+
+        <p class="hero-date">Saturday, 21st November 2026</p>
+        <span class="hero-sub">Sydney · Australia</span>
+
+        <div class="countdown" id="countdown">
+            <div class="cd-unit">
+                <div class="cd-number" id="cd-days">–</div>
+                <div class="cd-label">Days</div>
+            </div>
+            <div class="cd-unit">
+                <div class="cd-number" id="cd-hours">–</div>
+                <div class="cd-label">Hours</div>
+            </div>
+            <div class="cd-unit">
+                <div class="cd-number" id="cd-minutes">–</div>
+                <div class="cd-label">Minutes</div>
+            </div>
+            <div class="cd-unit">
+                <div class="cd-number" id="cd-seconds">–</div>
+                <div class="cd-label">Seconds</div>
+            </div>
         </div>
     </div>
 
